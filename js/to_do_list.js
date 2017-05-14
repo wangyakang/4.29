@@ -6,9 +6,6 @@ angular.module("myapp",[])
 
     $scope.done=localStorage.done?JSON.parse(localStorage.done):[];
 
-
-
-
     //是否显示完成列表
 
     $scope.isshow=true;
@@ -19,13 +16,11 @@ angular.module("myapp",[])
 
 
     //监控search
-
-
     $scope.search="";
     $scope.$watch("search",function(){
         var arr=$filter("filter")($scope.data,{title:$scope.search});
         $scope.currentIndex=0;
-        $scope.currentCon=arr[$scope.currentIndex]
+        $scope.currentCon=arr[$scope.currentIndex] //当前内容发生变化
 
 
     })
@@ -56,7 +51,7 @@ angular.module("myapp",[])
            if(id==obj.id){
                $scope.data.splice(index,1);
                var index=getIndex(id);
-               if(index==$scope.data.length-1){
+               if(index==$scope.data.length-1){//删除前面的
                    $scope.currentIndex=index-1;
                    $scope.currentCon=$scope.data[$scope.currentIndex];
                }else{
@@ -83,8 +78,7 @@ angular.module("myapp",[])
 
     }
 
-    /*失去焦点*/
-
+    /*失去焦点：将数据传入数据库中*/
     $scope.blur=function(id){
 
         localStorage.data=JSON.stringify($scope.data);
@@ -97,9 +91,9 @@ angular.module("myapp",[])
         var id=getMaxId($scope.currentCon.son);
         obj.id=id;
         obj.title="新建条目"+obj.id;
-        $scope.currentCon.son.push(obj);
+        $scope.currentCon.son.push(obj);//给当前内容中的son添加内容
 
-        localStorage.data=JSON.stringify($scope.data);
+        localStorage.data=JSON.stringify($scope.data);//修改的内存添加到data中
     }
 
     /*删除条目*/
@@ -173,11 +167,4 @@ angular.module("myapp",[])
 
 
     }
-
-
-
-
-
-
-
 }])

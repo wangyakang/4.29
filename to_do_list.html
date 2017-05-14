@@ -15,7 +15,6 @@
       <div class="container-fluid" ng-app="myapp" ng-controller="ctrl">
             <div class="row">
                 <div class="left col-xs-5 col-sm-4 col-md-3">
-
                     <div class="form-group search">
                         <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
                         <div class="input-group">
@@ -23,12 +22,10 @@
                             <input type="text" class="form-control" id="exampleInputAmount" placeholder="search" ng-model="search">
                         </div>
                     </div>
-
-
                     <div class="done">
                         <span class="glyphicon glyphicon-th"></span>
                         <span ng-click="showdone()">已完成</span>
-                        <span class="nums">{{done.length}}</span>
+                        <span class="nums badge">{{done.length}}</span>
                     </div>
 
                     <div class="listBox">
@@ -48,7 +45,6 @@
                         <span class="glyphicon glyphicon-plus"></span>
                         <span>添加事项</span>
                     </div>
-
                 </div>
                 <div class="right col-xs-7 col-sm-8 col-md-9" ng-show="isshow==true">
 
